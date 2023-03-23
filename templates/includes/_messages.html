@@ -1,0 +1,36 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div aria-live="polite" aria-atomic="true" style="position: relative; z-index: 100 !important;" data-delay="50000">
+        <div style="position: absolute; top: 0; left: 0;">
+          <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header btn-{{category}}"><strong class="mr-auto">SCM</strong></div>
+            <div class="toast-body alert-{{category}}">{{message}}</div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+{% if error %}
+  <div aria-live="polite" aria-atomic="true" style="position: relative; z-index: 100 !important;" data-delay="50000">
+    <div style="position: absolute; top: 0; left: 0;">
+      <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header btn-danger"><strong class="mr-auto">SCM</strong></div>
+        <div class="toast-body alert-danger">{{ error }}</div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% if msg %}
+  <div aria-live="polite" aria-atomic="true" style="position: relative; z-index: 100 !important;" data-delay="50000">
+    <div style="position: absolute; top: 0; left: 0;">
+      <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header btn-primary"><strong class="mr-auto">SCM</strong></div>
+        <div class="toast-body alert-primary">{{ msg }}</div>
+      </div>
+    </div>
+  </div>
+{% endif %}

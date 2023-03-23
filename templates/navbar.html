@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+    <title>Reminder Management</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="{{url_for('register')}}">Reminder Management System</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          {% if session.logged_in %}
+            <li class="nav-item"><a class="nav-link" href="{{url_for('home')}}">Dashboard</a></li>
+          {% endif %}
+          
+        </ul>
+        <span class="form-inline my-2 my-lg-0">
+          {% if session.logged_in %}
+            <a type="submit" href="/logout" class="btn btn-outline-danger">Logout</a>
+          {% else %}
+            <a class="btn btn-outline-primary my-2 my-sm-0" type="button" data-toggle="modal" data-target="#login" href="/login">Login</a>
+          {% endif %}
+        </span>
+      </div>
+    </nav>
+    <div class="bg-light main">
+      <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form action="{{url_for('login')}}" method="POST">
+              <div class="modal-body">
+                <div class="form-group col-8">
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend"><div class="input-group-text"><strong></strong></div></div>
+                    <input type="Name" class="form-control" name="Name" placeholder="Name" value="{{request.form.log_name}}">
+                  </div>
+                </div>
+                <div class="form-group col-8">
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend"><div class="input-group-text"><strong></strong></div></div>
+                    <input type="password" class="form-control" placeholder="Password" name="Password">
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div class="custom-control custom-checkbox mr-sm-2">
+                  <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+                  <label class="custom-control-label" for="customControlAutosizing">Remember me</label>
+                </div>
+                <button type="reset" class="btn btn-danger">Reset</button>
+                <button type="submit" class="btn btn-success">Login</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      {%block content%} {%endblock%}
+    </div>
+    <footer id="sticky-footer" class="py-4 bg-light text-black-50">
+      <div class="container text-center"><small>Copyright &copy; Reminder Management System || Python-Flask, MySQL | 2019</small></div>
+    </footer>
+    <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+  </body>
+</html>

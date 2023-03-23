@@ -1,0 +1,47 @@
+{% extends 'navbar.html' %}
+{% block content %}
+<div class="container">
+    {% from 'includes/_formhelpers.html' import render_field %} {% include 'includes/_messages.html' %}
+    <div class="row">
+        <div class="col-md-10">
+            <table class="table col-md-7 table-striped table-bordered table-sm table-list-search" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Subject</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Contact</th>
+                        <th>Recurrence(days)</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data %}
+						<tr>
+							<td>{{loop.index}}</td>
+							<td>{{row.SUBJECT}}</td>
+							<td>{{row.DATE}}</td>
+							<td>{{row.DESCRIPTION}}</td>
+							<td>{{row.CONTACT}}</td>
+							<td>
+								{% if row.DAY_7 != '0' %} {{row.DAY_7}} {% endif %} {% if row.DAY_5 != '0' %} {{row.DAY_5}} {% endif %} {% if row.DAY_3 != '0' %} {{row.DAY_3}} {% endif %} {% if row.DAY_2 != '0' %} {{row.DAY_2}} {% endif %}
+							</td>
+							<td>{{row.STATUS}}</td>
+						</tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-2">
+            <form method="post">
+                <h5>Search Reminder</h5>
+                <div class="form-group">{{render_field(form.date, class_="form-control")}}</div>
+                <div class="form-group">{{render_field(form.subject, class_="custom-select")}}</div>
+                <button type="submit" class="btn btn-success">Search</button>
+                <a href="/home/view_reminder"><button class="btn btn-danger">Reset</button></a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'navbar.html' %}
+{% block content %}
+<div class="container">
+	<h2>Welcome to Reminder Application, <label style="font-size: 0.83em;">{{session.username}}</label></h2>
+	<h5>Today is {{day}}, {{date}}</h5>
+  	<div class="row">
+	  <div class="col-md-4"><a class="nav-link btn btn-info" href="/home/set_reminder">Set Reminder</a></div>
+	  <div class="col-md-4"><a class="nav-link btn btn-info" href="/home/view_reminder">View Reminders</a></div>
+	  <div class="col-md-4"><a class="nav-link btn btn-info" href="/home/reminder">Modify Reminder</a></div>
+	</div><br>
+	<div class="row">
+	  <div class="col-md-4"><a class="nav-link btn btn-info" href="/home/enable-disable">Enable Reminder</a></div>
+	  <div class="col-md-4"><a class="nav-link btn btn-info" href="/home/enable-disable">Disable Reminder</a></div>
+	  <div class="col-md-4"><a class="nav-link btn btn-info" href="/home/reminder">Delete Reminder</a></div>
+	</div>
+</div>
+{% endblock %}

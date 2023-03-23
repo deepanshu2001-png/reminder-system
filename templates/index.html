@@ -1,0 +1,23 @@
+{% extends 'navbar.html' %}
+{% block content %}
+<div class="container home">
+    {% if not session.logged_in%}
+		<h2 id="title" class="col-md-6 float-left">REMINDER MANAGEMENT SYSTEM</h2> {% else %}
+		<h2 id="title" class="col-md-10 text-center">REMINDER MANAGEMENT SYSTEM</h2> {% endif %} {% if not session.logged_in%}
+		<span class="col-md-4 float-right">
+			<h3>Register</h3>
+			{% from 'includes/_formhelpers.html' import render_field %}
+			{% include 'includes/_messages.html' %}
+			<form method="POST" action="">
+				<div class="form-group">{{render_field(form.reg_name, class_="form-control")}}</div>
+				<div class="form-group">{{render_field(form.reg_password, class_="form-control")}}</div>
+				<div class="form-group">{{render_field(form.reg_confirm, class_="form-control")}}</div>
+				<span>
+					<button type="submit" class="btn btn-primary">Register</button>
+					<button type="reset" class="btn btn-danger">Reset</button>
+				</span>
+			</form>
+		</span>
+    {% endif %}
+</div>
+{% endblock %}

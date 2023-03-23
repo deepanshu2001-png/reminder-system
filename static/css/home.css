@@ -1,0 +1,28 @@
+html,body
+{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+nav
+{z-index: 22 !important;}
+.main
+{
+	position: relative;
+	height: 100vh !important;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#title
+{
+	position: absolute;
+	top: 40%;
+	transform: translateY(-50%);
+}
+.btn-sm
+{
+	padding:5px 10px;
+	font-size:12px;
+	line-height:1.5;
+	border-radius:3px;
+}

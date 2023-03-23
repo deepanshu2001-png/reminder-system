@@ -1,0 +1,37 @@
+{% extends 'navbar.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="POST" action="/disable">
+                <h4>Disable Reminders Here</h4>
+                <div class="form-group">
+                    <label>Reminders</label>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="disable_val">
+                        <option selected>Select from Here</option>
+                        {% for disable in data1 %}
+                        <option value="{{disable.DATE}},{{disable.SUBJECT}},{{disable.DESCRIPTION}}">{{disable.DATE}} - {{disable.SUBJECT}} - {{disable.DESCRIPTION}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-danger" value="DISABLE" name="disable">
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form method="POST" action="/enable">
+                <h4>Enable Reminders Here</h4>
+                <div class="form-group">
+                    <label>Reminders</label>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="enable_val">
+                        <option selected>Select from Here</option>
+                        {% for enable in data2 %}
+                        <option value="{{enable.DATE}},{{enable.SUBJECT}},{{enable.DESCRIPTION}}">{{enable.DATE}} - {{enable.SUBJECT}} - {{enable.DESCRIPTION}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-info" value="ENABLE" name="enable">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
